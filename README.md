@@ -16,20 +16,34 @@ $ npm install
 
 ## Development
 
-#### first terminal  
-```bash
-$ sbt ~fastLinkJS
-```
+#### frontend
+* 1st terminal (scala -> javascript)  
+  ```bash
+  $ sbt ~fastLinkJS
+  ```
 
-#### second terminal
-```bash
-$ npm run dev
-```
+* 2nd terminal (vite dev server)
+  ```bash
+  $ npm run dev
+  ```
+  
+아래 주소로 frontend 확인 가능함 
+http://localhost:3000 
+
+
+#### backend
+* 3rd terminal (backend api server)
+  ```bash
+  $ sbt ~backend/reStart
+  ```
+아래 주소로 Backend API 를 직접 확인 가능함 (UUID 형식의 petId 로 조회)
+http://localhost:8080/pets/550e8400-e29b-41d4-a716-446655440000
 
 
 ## Production
-```bash
-$ npm run build
-```
+#### frontend  
+  ```bash
+  $ npm run build
+  ```
 
 You can then find the built files in the dist/ directory. You will need an HTTP server, such as python3 -m http.server, to open the files, as Vite rewrites <script> tags to prevent cross-origin requests.
