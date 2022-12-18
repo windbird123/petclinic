@@ -1,3 +1,7 @@
+## Overview
+* https://github.com/sjrd/scalajs-sbt-vite-laminar-chartjs-example
+* https://github.com/zio/zio-petclinic
+
 ## Install
 You need to explicitly install the following software:
 
