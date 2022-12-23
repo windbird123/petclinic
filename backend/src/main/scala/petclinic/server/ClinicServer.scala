@@ -11,9 +11,10 @@ import zio.{Random, System, ZIO, ZLayer}
   * that we defined in the different route files
   */
 final case class ClinicServer(
-    petRoutes: PetRoutes
+    petRoutes: PetRoutes,
+    rootRoutes: RootRoutes
 ) {
-  val allRoutes: HttpApp[Any, Throwable] = petRoutes.routes
+  val allRoutes: HttpApp[Any, Throwable] = petRoutes.routes ++ rootRoutes.routes
 
   /** Logs the requests made to the server.
     *
@@ -54,5 +55,5 @@ final case class ClinicServer(
 }
 
 object ClinicServer {
-  val layer: ZLayer[PetRoutes, Nothing, ClinicServer] = ZLayer.fromFunction(ClinicServer.apply _)
+  val layer: ZLayer[PetRoutes with RootRoutes, Nothing, ClinicServer] = ZLayer.fromFunction(ClinicServer.apply _)
 }
