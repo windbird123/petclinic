@@ -1,8 +1,7 @@
 package petclinic.server
 
-import zhttp.http.middleware.HttpMiddleware
-import zhttp.http.{Http, HttpApp, Middleware, Request, Response}
-import zhttp.service.Server
+import zio.http.middleware.HttpMiddleware
+import zio.http.{Http, HttpApp, Middleware, Request, Response, Server}
 import zio.{Random, System, ZIO, ZLayer}
 
 /** ClinicServer is a service that will start up the ZIO-Http server.
@@ -24,22 +23,22 @@ final case class ClinicServer(
     * For more information on the logging, see:
     * https://zio.github.io/zio-logging/
     */
-  val loggingMiddleware: HttpMiddleware[Any, Nothing] =
-    new HttpMiddleware[Any, Nothing] {
-      override def apply[R1 <: Any, E1 >: Nothing](
-          http: Http[R1, E1, Request, Response]
-      ): Http[R1, E1, Request, Response] =
-        Http.fromOptionFunction[Request] { request =>
-          Random.nextUUID.flatMap { requestId =>
-            ZIO.logAnnotate("REQUEST-ID", requestId.toString) {
-              for {
-                _      <- ZIO.logInfo(s"Request: $request")
-                result <- http(request)
-              } yield result
-            }
-          }
-        }
-    }
+//  val loggingMiddleware: HttpMiddleware[Any, Nothing] =
+//    new HttpMiddleware[Any, Nothing] {
+//       def apply[R1 <: Any, E1 >: Nothing](
+//          http: Http[R1, E1, Request, Response]
+//      ): Http[R1, E1, Request, Response] =
+//        Http.fromOptionFunction[Request] { request =>
+//          Random.nextUUID.flatMap { requestId =>
+//            ZIO.logAnnotate("REQUEST-ID", requestId.toString) {
+//              for {
+//                _      <- ZIO.logInfo(s"Request: $request")
+//                result <- http(request)
+//              } yield result
+//            }
+//          }
+//        }
+//    }
 
   /** Resets the database to the initial state every 15 minutes to clean up the
     * deployed Heroku data. Then, it obtains a port from the environment on
@@ -47,10 +46,11 @@ final case class ClinicServer(
     * port will be provided by Heroku, otherwise the port will be 8080. The
     * server is then started on the given port with the routes provided.
     */
-  def start: ZIO[Any, Throwable, Unit] =
+  def start =
     for {
       port <- System.envOrElse("PORT", "8080").map(_.toInt)
-      _    <- Server.start(port, allRoutes @@ Middleware.cors() @@ loggingMiddleware)
+//      _    <- Server.serve(port, allRoutes @@ Middleware.cors())
+      _    <- Server.serve(allRoutes)
     } yield ()
 }
 

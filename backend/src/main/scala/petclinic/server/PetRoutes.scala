@@ -2,8 +2,9 @@ package petclinic.server
 
 import petclinic.server.ServerUtils._
 import petclinic.services.PetService
-import zhttp.http._
+import zio.http._
 import zio._
+import zio.http.model.Method
 import zio.json._
 
 final case class PetRoutes(service: PetService) {

@@ -9,7 +9,7 @@ val waypointVersion             = "0.5.0"      // router for Laminar for URL mat
 val postgresVersion             = "42.3.6"     // Java database connectivity (JDBC) driver for PostgreSQL
 val scalaJavaTimeVersion        = "2.4.0"      // an implementation of the java.time package for Scala
 val slf4jVersion                = "1.7.36"     // logging framework
-val zioHttpVersion              = "2.0.0-RC9"  // HTTP client library for ZIO
+val zioHttpVersion              = "0.0.3"      // HTTP client library for ZIO
 val zioJsonVersion              = "0.3.0-RC8"  // JSON serialization library for ZIO
 val zioLoggingVersion           = "2.0.0-RC10" // logging library for ZIO
 val zioTestContainersVersion    = "0.6.0"      // library fro testing database queries with ZIO
@@ -52,7 +52,7 @@ lazy val backend = (project in file("backend"))
       "dev.zio"               %% "zio-metrics-connectors"            % zioMetricsConnectorsVersion,
       "dev.zio"               %% "zio-test"                          % zioVersion % Test,
       "dev.zio"               %% "zio-test-sbt"                      % zioVersion % Test,
-      "io.d11"                %% "zhttp"                             % zioHttpVersion,
+      "dev.zio"               %% "zio-http"                          % zioHttpVersion,
       "org.postgresql"         % "postgresql"                        % postgresVersion,
       "org.flywaydb"           % "flyway-core"                       % flywayVersion,
       "io.github.scottweaver" %% "zio-2-0-testcontainers-postgresql" % zioTestContainersVersion,
