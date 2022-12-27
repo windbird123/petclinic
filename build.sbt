@@ -68,9 +68,15 @@ lazy val backend = (project in file("backend"))
   .settings(sharedSettings)
   .enablePlugins(FlywayPlugin)
   .settings(
-    flywayUrl      := "jdbc:postgresql://localhost:5432/postgres",
-    flywayUser     := "postgres",
-    flywayPassword := ""
+    flywayUrl                  := "jdbc:postgresql://localhost:5432/postgres",
+    flywayUser                 := "postgres",
+    flywayPassword             := "",
+    assembly / assemblyJarName := "app.jar",
+    assembly / mainClass       := Some("petclicnic.Main"),
+    assembly / assemblyMergeStrategy := {
+      case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+      case x                             => MergeStrategy.first
+    }
   )
   .dependsOn(shared)
 
