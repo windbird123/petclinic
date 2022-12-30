@@ -73,6 +73,9 @@ rsync -av --delete dist backend/src/main/resources/dist
 # mv dist backend/src/main/resources/dist 
 
 sbt backend/assembly  # backend/target/scala-2.13/app.jar
+
+# java -cp app.jar petclinic.Main
+# http://localhost:8080/index.html 로 확인
 ```
 
 

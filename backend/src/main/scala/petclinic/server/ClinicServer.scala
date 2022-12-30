@@ -11,9 +11,9 @@ import zio.{Random, System, ZIO, ZLayer}
   */
 final case class ClinicServer(
     petRoutes: PetRoutes,
-    rootRoutes: RootRoutes
+    distRoutes: DistRoutes
 ) {
-  val allRoutes: HttpApp[Any, Throwable] = petRoutes.routes ++ rootRoutes.routes
+  val allRoutes: HttpApp[Any, Throwable] = petRoutes.routes ++ distRoutes.routes
 
   /** Logs the requests made to the server.
     *
@@ -48,12 +48,10 @@ final case class ClinicServer(
     */
   def start =
     for {
-      port <- System.envOrElse("PORT", "8080").map(_.toInt)
-//      _    <- Server.serve(port, allRoutes @@ Middleware.cors())
-      _    <- Server.serve(allRoutes)
+      _ <- Server.serve(allRoutes)
     } yield ()
 }
 
 object ClinicServer {
-  val layer: ZLayer[PetRoutes with RootRoutes, Nothing, ClinicServer] = ZLayer.fromFunction(ClinicServer.apply _)
+  val layer: ZLayer[PetRoutes with DistRoutes, Nothing, ClinicServer] = ZLayer.fromFunction(ClinicServer.apply _)
 }

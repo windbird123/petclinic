@@ -1,7 +1,7 @@
 package petclinic
 
 import org.postgresql.ds.PGSimpleDataSource
-import petclinic.server.{ClinicServer, PetRoutes, RootRoutes}
+import petclinic.server.{ClinicServer, PetRoutes, DistRoutes}
 import petclinic.services.PetServiceLive
 import zio.http.{Server, ServerConfig}
 import zio.{Task, ULayer, ZIO, ZIOAppDefault, ZLayer}
@@ -15,6 +15,6 @@ object Main extends ZIOAppDefault {
   val myServer = ZLayer.succeed(ServerConfig(address = new InetSocketAddress(8080))) >>> Server.live
   override def run: Task[Unit] = ZIO
     .serviceWithZIO[ClinicServer](_.start)
-    .provide(myServer, ClinicServer.layer, PetRoutes.layer, RootRoutes.layer, PetServiceLive.layer, dataSourceLayer)
+    .provide(myServer, ClinicServer.layer, PetRoutes.layer, DistRoutes.layer, PetServiceLive.layer, dataSourceLayer)
 //    .provide(Server.default, ClinicServer.layer, PetRoutes.layer, RootRoutes.layer, PetServiceLive.layer, dataSourceLayer)
 }
