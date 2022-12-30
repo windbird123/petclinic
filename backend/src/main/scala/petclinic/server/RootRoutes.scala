@@ -20,7 +20,7 @@ final case class RootRoutes() {
   val routes: Http[Any, Throwable, Request, Response] = Http.collectHttp[Request] {
     case Method.GET -> "" /: path =>
       println(s"PATH: $path")
-      Http.fromFile(new File(s"../dist/$path"))
+      Http.fromFile(new File(s"dist/$path"))
   }
 }
 

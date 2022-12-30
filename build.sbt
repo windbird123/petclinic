@@ -72,7 +72,6 @@ lazy val backend = (project in file("backend"))
     flywayUser                 := "postgres",
     flywayPassword             := "",
     assembly / assemblyJarName := "app.jar",
-    assembly / mainClass       := Some("petclicnic.Main"),
     assembly / assemblyMergeStrategy := {
       case PathList("META-INF", xs @ _*) => MergeStrategy.discard
       case x                             => MergeStrategy.first

@@ -48,6 +48,7 @@ http://localhost:8080/pets/550e8400-e29b-41d4-a716-446655440000
 ## Production (Basic)
 #### frontend  
   ```bash
+  # $npm ci
   $ npm run build
   ```
 
@@ -58,10 +59,9 @@ You can then find the built files in the dist/ directory. You will need an HTTP 
 ## Production (Simple) 
 One Jar 로 만들어 backend server 에서 html, js 서빙하기   
 
-#### backend Main class 확인 
-`build.sbt` 의 아래 항목 체크(or 수정)
+#### Dockerfile 의 ENTRYPOINT 확인
 ```
-assembly / mainClass := Some("petclicnic.Main")
+"petclinic.Main"
 ```
 
 #### frontend 를 포함해 one-jar (app.jar) 로 만들기 

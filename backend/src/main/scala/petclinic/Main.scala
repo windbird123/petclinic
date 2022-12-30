@@ -12,7 +12,7 @@ import javax.sql.DataSource
 object Main extends ZIOAppDefault {
   val dataSourceLayer: ULayer[DataSource] = ZLayer.succeed(new PGSimpleDataSource)
 
-  val myServer = ZLayer.succeed(ServerConfig(address = new InetSocketAddress(8081))) >>> Server.live
+  val myServer = ZLayer.succeed(ServerConfig(address = new InetSocketAddress(8080))) >>> Server.live
   override def run: Task[Unit] = ZIO
     .serviceWithZIO[ClinicServer](_.start)
     .provide(myServer, ClinicServer.layer, PetRoutes.layer, RootRoutes.layer, PetServiceLive.layer, dataSourceLayer)

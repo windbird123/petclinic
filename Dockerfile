@@ -5,4 +5,4 @@ WORKDIR /app
 
 EXPOSE 8080
 
-ENTRYPOINT [ "java", "-Dport=8080", "-DisProd=true", "-jar", "app.jar" ]
+ENTRYPOINT [ "java", "-Dport=8080", "-DisProd=true", "-jar", "app.jar", "petclinic.Main" ]
