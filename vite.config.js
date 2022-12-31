@@ -30,6 +30,7 @@ const replacementForPublic = isDev()
     : printSbtTask("publicProd");
 
 export default defineConfig({
+    publicDir: './frontend/public',
     resolve: {
         alias: [
             {

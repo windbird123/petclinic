@@ -90,7 +90,7 @@ docker run --rm -p 9000:8080 demoscalaflyio
 
 ### 개발 가이드
 * main.js 에 의존성 있는(최종 index.html 에서 `link`(css)  혹은 `script`(js) 등으로 참조되어야 할) resource (js, css) 를 import 하면 `npm run build` 시 `dist/assets` 디렉토리에 모이게 된다. (js 파일은 bundling 됨)
-* main.js 에서 import 하지 않지만 필요한 리소스(이미지 파일 등) 은 `public` 디렉토리에 넣는다.  `npm run build` 시 `dist/` 디렉토리에 모이게 된다. [vite-public-directory](https://vitejs.dev/guide/assets.html#the-public-directory)  
+* main.js 에서 import 하지 않지만 필요한 리소스(이미지 파일 등) 은 `frontend/public` 디렉토리에 넣는다.(vite.config.js 파일에서 `publicDir` 을 frontend/public 으로 설정했음)  `npm run build` 시 `dist/` 디렉토리에 모이게 된다. [vite-public-directory](https://vitejs.dev/guide/assets.html#the-public-directory)  
   * You should always reference public assets using root absolute path - for example, public/icon.png should be referenced in source code as /icon.png
   * Assets in public cannot be imported from JavaScript.
 * main.js 에서 사용하는 @public 의 위치는 `frontend\target\scala-2.13\frontend-opt` 혹은 `frontend\target\scala-2.13\frontend-fastopt` 가 될 수 있다. 
