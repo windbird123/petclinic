@@ -3,18 +3,18 @@ ThisBuild / version          := "0.1.0-SNAPSHOT"
 ThisBuild / organization     := "com.github.windbird123.petclinic"
 ThisBuild / organizationName := "windbird123"
 
-val flywayVersion               = "8.5.12"     // manages database migrations
-val laminarVersion              = "0.14.2"     // functional reactive programming (FRP) library
-val waypointVersion             = "0.5.0"      // router for Laminar for URL matching and managing URL transitions
-val postgresVersion             = "42.3.6"     // Java database connectivity (JDBC) driver for PostgreSQL
-val scalaJavaTimeVersion        = "2.4.0"      // an implementation of the java.time package for Scala
-val slf4jVersion                = "1.7.36"     // logging framework
-val zioHttpVersion              = "0.0.3"      // HTTP client library for ZIO
-val zioJsonVersion              = "0.3.0-RC8"  // JSON serialization library for ZIO
-val zioLoggingVersion           = "2.0.0-RC10" // logging library for ZIO
-val zioTestContainersVersion    = "0.6.0"      // library fro testing database queries with ZIO
-val zioVersion                  = "2.0.0-RC6"  // Scala library for asynchronous and concurrent programming
-val zioMetricsConnectorsVersion = "2.0.0-RC6"  // metrics library for ZIO
+val flywayVersion               = "8.5.12" // manages database migrations
+val laminarVersion              = "0.14.2" // functional reactive programming (FRP) library
+val waypointVersion             = "0.5.0"  // router for Laminar for URL matching and managing URL transitions
+val postgresVersion             = "42.3.6" // Java database connectivity (JDBC) driver for PostgreSQL
+val scalaJavaTimeVersion        = "2.4.0"  // an implementation of the java.time package for Scala
+val slf4jVersion                = "1.7.36" // logging framework
+val zioHttpVersion              = "0.0.3"  // HTTP client library for ZIO
+val zioJsonVersion              = "0.4.2"  // JSON serialization library for ZIO
+val zioLoggingVersion           = "2.1.7"  // logging library for ZIO
+val zioTestContainersVersion    = "0.6.0"  // library fro testing database queries with ZIO
+val zioVersion                  = "2.0.3"  // Scala library for asynchronous and concurrent programming
+val zioMetricsConnectorsVersion = "2.0.3"  // metrics library for ZIO
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
