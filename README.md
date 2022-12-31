@@ -2,6 +2,7 @@
 * https://github.com/sjrd/scalajs-sbt-vite-laminar-chartjs-example
 * https://github.com/zio/zio-petclinic
 * https://github.com/sherpal/FlyIOScalaJVMDemo
+* https://github.com/mushtaq/scala-js-vite
 
 ## Install
 You need to explicitly install the following software:
